@@ -10,15 +10,11 @@ const Page = ({ title }) => (
       <h2>{title}</h2>
     </div>
     <p className="App-intro">This is the {title} page.</p>
-    <p>
+    <div id="navbar">
       <Link to="/">Home</Link>
-    </p>
-    <p>
       <Link to="/about">About</Link>
-    </p>
-    <p>
       <Link to="/settings">Settings</Link>
-    </p>
+    </div>
   </div>
 );
 
