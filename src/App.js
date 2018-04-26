@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Router, browserHistory, Route, Link } from 'react-router';
+import Image from './components/camera';
 import logo from './logo.png';
 import './App.css';
 
@@ -20,8 +21,6 @@ const Page = ({ title }) => (
 
 const Home = props => <Page title="Home" />;
 
-const About = props => <Page title="About" />;
-
 const Settings = props => <Page title="Settings" />;
 
 class App extends Component {
@@ -29,7 +28,7 @@ class App extends Component {
     return (
       <Router history={browserHistory}>
         <Route path="/" component={Home} />
-        <Route path="/about" component={About} />
+        <Route path="/about" component={Image} />
         <Route path="/settings" component={Settings} />
       </Router>
     );
