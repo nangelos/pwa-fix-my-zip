@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Router, browserHistory, Route, Link } from 'react-router';
-import logo from '../src/logo.png';
-import '../src/App.css';
+import logo from './logo.png';
+import './App.css';
 
 const Page = ({ title }) => (
   <div className="App">
