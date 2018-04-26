@@ -13,7 +13,7 @@ const Page = ({ title }) => (
     <p className="App-intro">This is the {title} page.</p>
     <div id="navbar">
       <Link to="/">Home</Link>
-      <Link to="/about">About</Link>
+      <Link to="/camera">Camera</Link>
       <Link to="/settings">Settings</Link>
     </div>
   </div>
@@ -28,7 +28,7 @@ class App extends Component {
     return (
       <Router history={browserHistory}>
         <Route path="/" component={Home} />
-        <Route path="/about" component={Image} />
+        <Route path="/camera" component={Image} />
         <Route path="/settings" component={Settings} />
       </Router>
     );
