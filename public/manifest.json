@@ -1,6 +1,6 @@
 {
-  "short_name": "My First PWA",
-  "name": "My First Progressive Web App",
+  "short_name": "Fix My Zip",
+  "name": "Progressive Web App for Reporting Infrastructure Issues",
   "icons": [
     {
       "src": "icon.png",
