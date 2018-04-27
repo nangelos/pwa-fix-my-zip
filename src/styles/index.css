@@ -30,6 +30,7 @@ a {
 }
 
 #imagePreview {
-  height: 350px;
-  width: 197px;
+  height: 300px;
+  width: 300px;
+  object-fit: cover;
 }
