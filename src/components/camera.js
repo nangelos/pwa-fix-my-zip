@@ -1,27 +1,17 @@
-import React, { Component } from 'react';
-import ImageDetails from './image-details';
+import React from 'react';
 
-class Image extends Component {
-  render() {
-    return (
-      <div className="Camera-component">
-        <form>
-          <input
-            id="image-input"
-            accept="image"
-            type="file"
-            capture="environment"
-          />
-          <script>
-            {/* {const fileInput = document.getElementById('image-input');
-    fileInput.addEventListener('change', (e) => doSomethingWithFiles(e.target.files));
-    } */}
-          </script>
-          <ImageDetails />
-        </form>
-      </div>
-    );
-  }
-}
+const Camera = props => {
+  return (
+    <div className="Camera-component">
+      <input
+        onChange={props.handleImageChange}
+        id="image-input"
+        accept="image"
+        type="file"
+        capture="environment"
+      />
+    </div>
+  );
+};
 
-export default Image;
+export default Camera;
