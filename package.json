@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
     "nodemon": "^1.17.3",
     "path": "^0.12.7",
     "pg": "^7.4.1",
