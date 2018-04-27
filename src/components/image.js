@@ -60,7 +60,9 @@ class Image extends Component {
     let { imagePreviewUrl } = this.state;
     let $imagePreview = null;
     if (imagePreviewUrl)
-      $imagePreview = <img src={imagePreviewUrl} alt={logo} />;
+      $imagePreview = (
+        <img src={imagePreviewUrl} alt={logo} id="$imagePreview" />
+      );
     return (
       <div className="Camera-component">
         <form onSubmit={this.handleSubmit}>

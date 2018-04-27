@@ -29,6 +29,7 @@ a {
   color: white;
 }
 
-#viewport {
-  border: 2px purple;
+#imagePreview {
+  height: 400px;
+  width: 250px;
 }
