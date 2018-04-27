@@ -61,7 +61,7 @@ class Image extends Component {
     let $imagePreview = null;
     if (imagePreviewUrl)
       $imagePreview = (
-        <img src={imagePreviewUrl} alt={logo} id="$imagePreview" />
+        <img src={imagePreviewUrl} alt={logo} id="imagePreview" />
       );
     return (
       <div className="Camera-component">
