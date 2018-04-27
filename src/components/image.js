@@ -1,43 +1,20 @@
 import React, { Component } from 'react';
+import logo from '../styles/logo.png';
 import ImageDetails from './image-details';
 import { Link } from 'react-router';
 import Camera from './camera';
-import Canvas from './canvas';
-import GPS from './gps';
 
 class Image extends Component {
   constructor() {
     super();
     this.state = {
       image: {},
+      imagePreviewUrl: '',
       issueType: '',
       issueDescription: '',
       coords: [],
     };
   }
-
-  handleTextChange = event => {
-    let { name, value } = event.target;
-    console.log(name, value);
-    this.setState({ [name]: value });
-  };
-
-  handleImageChange = event => {
-    let { files } = event.target;
-    console.log(files);
-    this.setState({ image: files });
-    // const canvas = document.getElementById('viewport');
-    // if (canvas.getContext) {
-    //   const ctx = canvas.getContext('2d');
-    //   return document.getElementById('image-input');
-    // }
-  };
-
-  handleSubmit = event => {
-    event.preventDefault();
-    console.log(this.props.coords);
-    console.log('Submit was pressed');
-  };
 
   getLocation = () => {
     if ('geolocation' in navigator) {
@@ -53,18 +30,42 @@ class Image extends Component {
     }
   };
 
+  handleTextChange = event => {
+    let { name, value } = event.target;
+    console.log(name, value);
+    this.setState({ [name]: value });
+  };
+
+  handleImageChange = event => {
+    const reader = new FileReader();
+    let file = event.target.files[0];
+    console.log(file);
+    reader.onloadend = () => {
+      this.setState({ image: file, imagePreviewUrl: reader.result });
+    };
+    reader.readAsDataURL(file);
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    console.log('Submit was pressed');
+  };
+
   componentDidMount() {
     this.getLocation();
   }
 
   render() {
     console.log(this.state);
+    let { imagePreviewUrl } = this.state;
+    let $imagePreview = null;
+    if (imagePreviewUrl)
+      $imagePreview = <img src={imagePreviewUrl} alt={logo} />;
     return (
       <div className="Camera-component">
         <form onSubmit={this.handleSubmit}>
           <Camera handleImageChange={this.handleImageChange} />
-          {/* <canvas id="viewport" /> */}
-          <Canvas />
+          {$imagePreview}
           <ImageDetails handleTextChange={this.handleTextChange} />
           <button type="submit">Submit</button>
         </form>
