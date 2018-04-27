@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from '../components/navbar';
-import logo from '../logo.png';
-import '../App.css';
+import logo from '../styles/logo.png';
+import '../styles/App.css';
 
 const Page = ({ title }) => (
   <div className="App">

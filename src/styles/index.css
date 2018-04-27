@@ -28,3 +28,7 @@ a {
   background-color: #222;
   color: white;
 }
+
+#viewport {
+  border: 2px purple;
+}

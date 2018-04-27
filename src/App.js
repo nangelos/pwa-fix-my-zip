@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Router, browserHistory, Route } from 'react-router';
 import Image from './components/image';
 import Page from './components/Page';
-import './App.css';
+import './styles/App.css';
 
 const Home = props => <Page title="Home" />;
 
