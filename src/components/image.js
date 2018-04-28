@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from '../styles/logo.png';
 import ImageDetails from './image-details';
 import { Link } from 'react-router';
-import Camera from './camera';
+import Camera from './image-camera';
 
 class Image extends Component {
   constructor() {
@@ -37,6 +37,7 @@ class Image extends Component {
   };
 
   handleImageChange = event => {
+    this.getLocation();
     const reader = new FileReader();
     let file = event.target.files[0];
     console.log(file);
@@ -51,9 +52,9 @@ class Image extends Component {
     console.log('Submit was pressed');
   };
 
-  componentDidMount() {
-    this.getLocation();
-  }
+  // componentDidMount() {
+  //   this.getLocation();
+  // }
 
   render() {
     console.log(this.state);
