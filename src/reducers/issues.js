@@ -35,10 +35,18 @@ export const fetchIssue = id => {
 
 export const addIssue = newIssue => {
   return function thunk(dispatch) {
-    return axios
-      .post('/api/issues', newIssue)
-      .then(issue => dispatch(createIssue(newIssue)))
-      .catch(err => console.error(err));
+    const options = {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      data: newIssue,
+      url: '/api/issues',
+    };
+    return (
+      axios(options)
+        // .post('/api/issues', newIssue)
+        .then(issue => dispatch(createIssue(issue)))
+        .catch(err => console.error(err))
+    );
   };
 };
 

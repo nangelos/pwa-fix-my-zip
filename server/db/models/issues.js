@@ -2,15 +2,11 @@ const Sequelize = require('sequelize');
 const db = require('../index');
 
 module.exports = db.define('issue', {
-  imageid: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
   imagePreviewUrl: {
     type: Sequelize.TEXT,
   },
   issueType: {
-    type: Sequelize.ENUM('pothole', 'streetlight', 'traffic-light'),
+    type: Sequelize.ENUM('pothole', 'street-light', 'traffic-light'),
     allowNull: false,
   },
   latitude: {

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import logo from '../styles/logo.png';
 import ImageDetails from './image-details';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import Camera from './image-camera';
+import { addIssue } from '../reducers/issues';
+import { connect } from 'react-redux';
 
 class Image extends Component {
   constructor() {
@@ -32,24 +34,46 @@ class Image extends Component {
 
   handleTextChange = event => {
     let { name, value } = event.target;
-    console.log(name, value);
     this.setState({ [name]: value });
   };
 
+  handleSelectChange = event => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value.toLowerCase().replace(' ', '-') });
+  };
+
   handleImageChange = event => {
+    this.setState({ disabled: true });
     this.getLocation();
     const reader = new FileReader();
     let file = event.target.files[0];
-    console.log(file);
     reader.onloadend = () => {
-      this.setState({ image: file, imagePreviewUrl: reader.result });
+      this.setState({
+        image: file,
+        imagePreviewUrl: reader.result,
+        disabled: false,
+      });
     };
     reader.readAsDataURL(file);
   };
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log('Submit was pressed');
+    const {
+      image,
+      imagePreviewUrl,
+      issueType,
+      issueDescription,
+      coords,
+    } = this.state;
+    this.props.createIssue({
+      image,
+      imagePreviewUrl,
+      issueType,
+      issueDescription,
+      latitude: coords[0],
+      longitude: coords[1],
+    });
   };
 
   // componentDidMount() {
@@ -57,8 +81,7 @@ class Image extends Component {
   // }
 
   render() {
-    console.log(this.state);
-    let { imagePreviewUrl } = this.state;
+    let { imagePreviewUrl, disabled } = this.state;
     let $imagePreview = null;
     if (imagePreviewUrl)
       $imagePreview = (
@@ -69,8 +92,13 @@ class Image extends Component {
         <form onSubmit={this.handleSubmit}>
           <Camera handleImageChange={this.handleImageChange} />
           {$imagePreview}
-          <ImageDetails handleTextChange={this.handleTextChange} />
-          <button type="submit">Submit</button>
+          <ImageDetails
+            handleTextChange={this.handleTextChange}
+            handleSelectChange={this.handleSelectChange}
+          />
+          <button type="submit" disabled={disabled}>
+            Submit
+          </button>
         </form>
         <br />
         <Link to="/">Back</Link>
@@ -78,5 +106,8 @@ class Image extends Component {
     );
   }
 }
+const mapDispatch = dispatch => ({
+  createIssue: issue => dispatch(addIssue(issue)),
+});
 
-export default Image;
+export default connect(null, mapDispatch)(Image);

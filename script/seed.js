@@ -2,18 +2,18 @@ const db = require('../server/db');
 const User = require('../server/db/models/users');
 const Issue = require('../server/db/models/issues');
 const faker = require('faker');
-const issues = ['traffic-light', 'streetlight', 'pothole'];
+const issues = ['traffic-light', 'street-light', 'pothole'];
 const fixedOptions = [true, false, false, false];
 
 const generateIssue = () => {
-  let imageid = Math.ceil(Math.random() * 400) + '.jpg';
+  // let imageid = Math.ceil(Math.random() * 400) + '.jpg';
   let email = faker.internet.email();
   let issue = issues[Math.floor(Math.random() * issues.length)];
   let latitude = 41.8 - Math.random() / 100;
   let longitude = -87.64 + Math.random() / 100;
   let fixed = fixedOptions[Math.floor(Math.random() * fixedOptions.length)];
   return {
-    imageid: imageid,
+    // imageid: imageid,
     email: email,
     issueType: issue,
     latitude: latitude,

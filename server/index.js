@@ -29,4 +29,14 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500).send(err.message || 'Internal server error');
 });
 
+const { db } = require('./db/models');
+const PORT = 8000;
+
+db
+  .sync() // if you update your db schemas, make sure you drop the tables first and then recreate them
+  .then(() => {
+    console.log('db synced');
+    app.listen(PORT, () => console.log(`listening on port ${PORT}`));
+  });
+
 module.exports = app;
