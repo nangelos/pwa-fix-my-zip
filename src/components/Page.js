@@ -4,7 +4,6 @@ import logo from '../styles/logo.png';
 import '../styles/App.css';
 
 const Page = ({ title }) => {
-  console.log(`Page component being called with ${title}`);
   return (
     <div className="App">
       <div className="App-header">
