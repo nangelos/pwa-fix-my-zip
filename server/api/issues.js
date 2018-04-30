@@ -17,7 +17,6 @@ router.get('/:id', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-  console.log('here is the req.body>>>>>>', req.body);
   Issue.create(req.body)
     .then(newIssue => {
       res.status(201).json(newIssue);
