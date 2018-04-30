@@ -1,5 +1,5 @@
 {
-  "name": "pwa-fix",
+  "name": "pwa-fix-my-zip",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -28,10 +28,5 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  },
-  "proxy": {
-    "/api": {
-      "target": "http://localhost:8000"
-    }
   }
 }
