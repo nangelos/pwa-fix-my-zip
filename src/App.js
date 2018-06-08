@@ -3,16 +3,14 @@ import React, { Component } from 'react';
 import {
   Route,
   Switch,
-  Redirect,
+  /*Redirect,*/
   BrowserRouter as Router,
 } from 'react-router-dom';
 import Image from './components/image';
 import Page from './components/Page';
-import IssueResponse from './components/issue-response';
 import './styles/App.css';
 import { Provider } from 'react-redux';
 import store from './store';
-// import Dashboard from './components/dashboard/dashboard';
 
 const Home = props => <Page title="Home" />;
 
@@ -27,7 +25,6 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route path="/issue" component={Image} />
             <Route exact path="/settings" component={Settings} />
-            <Route exact path="/response" component={IssueResponse} />
           </Switch>
         </Router>
       </Provider>

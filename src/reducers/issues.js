@@ -1,5 +1,5 @@
 import axios from 'axios';
-import history from '../history';
+// import history from '../history';
 
 // ACTION TYPES
 const GET_ISSUE = 'GET_ISSUE';
@@ -42,15 +42,10 @@ export const addIssue = newIssue => {
       data: newIssue,
       url: '/api/issues',
     };
-    console.log(options, newIssue)
     return (
       axios(options)
-        // .post('/api/issues', newIssue)
         .then(issue => {
-          console.log(issue)
           dispatch(createIssue(issue));
-          console.log('now to push to a new page.....')
-          history.push('/response');
         })
         .catch(err => console.error(err))
     );

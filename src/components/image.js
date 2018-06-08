@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Camera from './image-camera';
 import { addIssue } from '../reducers/issues';
 import { connect } from 'react-redux';
+import IssueResponse from './issue-response';
 
 class Image extends Component {
   constructor() {
@@ -15,6 +16,7 @@ class Image extends Component {
       issueType: '',
       issueDescription: '',
       coords: [],
+      submitted: false,
     };
   }
 
@@ -74,14 +76,11 @@ class Image extends Component {
       latitude: coords[0],
       longitude: coords[1],
     });
+    this.setState({ submitted: true })
   };
 
-  // componentDidMount() {
-  //   this.getLocation();
-  // }
-
   render() {
-    let { imagePreviewUrl, disabled } = this.state;
+    let { imagePreviewUrl, disabled, submitted } = this.state;
     let $imagePreview = null;
     if (imagePreviewUrl)
       $imagePreview = (
@@ -89,19 +88,26 @@ class Image extends Component {
       );
     return (
       <div className="Camera-component">
-        <form onSubmit={this.handleSubmit}>
-          <Camera handleImageChange={this.handleImageChange} />
-          {$imagePreview}
-          <ImageDetails
-            handleTextChange={this.handleTextChange}
-            handleSelectChange={this.handleSelectChange}
-          />
-          <button type="submit" disabled={disabled}>
-            Submit
+        {
+          !submitted ?
+            <div>
+              <form onSubmit={this.handleSubmit}>
+                <Camera handleImageChange={this.handleImageChange} />
+                {$imagePreview}
+                <ImageDetails
+                  handleTextChange={this.handleTextChange}
+                  handleSelectChange={this.handleSelectChange}
+                />
+                <button type="submit" disabled={disabled}>
+                  Submit
           </button>
-        </form>
-        <br />
-        <Link to="/">Back</Link>
+              </form>
+              <br />
+              <Link to="/">Back</Link>
+            </div>
+            :
+            <IssueResponse />
+        }
       </div>
     );
   }
