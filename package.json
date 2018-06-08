@@ -9,6 +9,7 @@
     "crypto": "^1.0.1",
     "express": "^4.16.3",
     "faker": "^4.1.0",
+    "history": "^4.7.2",
     "nodemon": "^1.17.3",
     "path": "^0.12.7",
     "pg": "^7.4.1",
@@ -31,5 +32,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "proxy": {
+    "/api": {
+      "target": "http://localhost:8000"
+    }
   }
 }

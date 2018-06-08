@@ -11,7 +11,7 @@ const app = express();
 app.use(volleyball);
 
 //body parsing middleware
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '100kb' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //static middleware
