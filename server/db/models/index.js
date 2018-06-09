@@ -1,5 +1,3 @@
-'use strict';
-
 const db = require('../index');
 const Issue = require('./issues');
 const User = require('./users');
