@@ -38,5 +38,8 @@
     "/api": {
       "target": "http://localhost:8000"
     }
+  },
+  "devDependencies": {
+    "eslint-plugin-react": "^7.9.1"
   }
 }

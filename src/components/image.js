@@ -35,7 +35,7 @@ class Image extends Component {
   };
 
   handleTextChange = event => {
-    let { name, value } = event.target;
+    const { name, value } = event.target;
     this.setState({ [name]: value });
   };
 
@@ -48,7 +48,8 @@ class Image extends Component {
     this.setState({ disabled: true });
     this.getLocation();
     const reader = new FileReader();
-    let file = event.target.files[0];
+    const file = event.target.files[0];
+
     reader.onloadend = () => {
       this.setState({
         image: file,
@@ -56,6 +57,7 @@ class Image extends Component {
         disabled: false,
       });
     };
+
     reader.readAsDataURL(file);
   };
 
@@ -80,7 +82,7 @@ class Image extends Component {
   };
 
   render() {
-    let { imagePreviewUrl, disabled, submitted } = this.state;
+    const { imagePreviewUrl, disabled, submitted } = this.state;
     let $imagePreview = null;
     if (imagePreviewUrl)
       $imagePreview = (

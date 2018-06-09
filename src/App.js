@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import {
   Route,
   Switch,
-  /*Redirect,*/
+  /* Redirect,*/
   BrowserRouter as Router,
 } from 'react-router-dom';
 import Image from './components/image';
@@ -20,7 +20,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Router /*history={browserHistory}*/ >
+        <Router /* history={browserHistory}*/ >
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/issue" component={Image} />
