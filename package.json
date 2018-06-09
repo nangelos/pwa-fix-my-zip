@@ -11,6 +11,7 @@
     "express": "^4.16.3",
     "faker": "^4.1.0",
     "history": "^4.7.2",
+    "image-compressor": "^1.2.0",
     "nodemon": "^1.17.3",
     "path": "^0.12.7",
     "pg": "^7.4.1",

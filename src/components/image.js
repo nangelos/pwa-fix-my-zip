@@ -8,17 +8,14 @@ import { connect } from 'react-redux';
 import IssueResponse from './issue-response';
 
 class Image extends Component {
-  constructor() {
-    super();
-    this.state = {
-      image: {},
-      imagePreviewUrl: '',
-      issueType: '',
-      issueDescription: '',
-      coords: [],
-      submitted: false,
-    };
-  }
+  state = {
+    image: {},
+    imagePreviewUrl: '',
+    issueType: '',
+    issueDescription: '',
+    coords: [],
+    submitted: false,
+  };
 
   getLocation = () => {
     if ('geolocation' in navigator) {

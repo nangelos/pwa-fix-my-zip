@@ -10,7 +10,7 @@ app.use(volleyball);
 
 // body parsing middleware
 app.use(bodyParser.json({ limit: '500kb' }));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }));
 
 // static middleware
 app.use(express.static(path.join(__dirname, '../build')));
