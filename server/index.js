@@ -29,7 +29,7 @@ app.use((err, req, res, next) => {
 });
 
 const { db } = require('./db/models');
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
 db
   .sync() // if you update your db schemas, make sure you drop the tables first and then recreate them
