@@ -11,9 +11,6 @@ const dbName = process.env.DB_NAME;
 const dbUser = process.env.DB_USER;
 const dbPass = process.env.DB_PASSWORD;
 
-console.log(process.env.DB_NAME)
-console.log('host: ', dbHost, 'name: ', dbName, 'User: ', dbUser, 'Pass: ', dbPass)
-
 // create the database instance that can be used in other database files
 module.exports = new Sequelize(dbName, dbUser, dbPass, {
   host: dbHost,
