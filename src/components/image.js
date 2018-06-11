@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import IssueResponse from './issue-response';
 
 class Image extends Component {
-  state = {
+  initialState = {
     image: {},
     imagePreviewUrl: '',
     issueType: '',
@@ -16,6 +16,8 @@ class Image extends Component {
     coords: [],
     submitted: false,
   };
+
+  state = this.initialState;
 
   getLocation = () => {
     if ('geolocation' in navigator) {
@@ -78,6 +80,10 @@ class Image extends Component {
     this.setState({ submitted: true })
   };
 
+  newIssue = () => {
+    this.setState(this.initialState)
+  }
+
   render() {
     const { imagePreviewUrl, disabled, submitted } = this.state;
     let $imagePreview = null;
@@ -105,7 +111,7 @@ class Image extends Component {
               <Link to="/">Back</Link>
             </div>
             :
-            <IssueResponse />
+            <IssueResponse newIssue={this.newIssue} />
         }
       </div>
     );
